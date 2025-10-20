@@ -1,13 +1,8 @@
 # BiLSTM Implementation for sentiment analysis of poems.
 
-
 !pip install nltk datasets textblob tensorflow keras
 
-
- 
 # Dataset preprocessing - Dataset taken from [here](https://huggingface.co/datasets/Ozziey/poems_dataset)
-
-
 
 import pandas as pd
 from datasets import load_dataset
@@ -132,11 +127,7 @@ X_train, X_test, y_train, y_test = train_test_split(sequences_padded, df[emotion
 ros = RandomOverSampler(random_state=42)
 X_resampled, y_resampled = ros.fit_resample(X_train, y_train)
 
-
-
 # Data Distribution - Now we verify the distribution of the `pred` values after the split to ensure that the there is an equal ratio of `pred` values across the training and testing sets.
-
-
 
 import matplotlib.pyplot as plt
 
@@ -162,11 +153,7 @@ ax.legend()
 plt.tight_layout()
 plt.show()
 
-
-
 # C-BiLSTM Model with an embedding layer
-
-
 
 from keras.models import Sequential
 from keras.layers import Embedding, Bidirectional, LSTM, Dense, Dropout, Conv1D, MaxPooling1D
@@ -236,11 +223,7 @@ history = model.fit(
 scores = model.evaluate(X_test, y_test, verbose=0)
 print(f'Test loss: {scores[0]}, Test accuracy: {scores[1]*100}%')
 
- 
-
 # Generate metrics on learning process and its visualisations for training and validation accuracy, loss, and F1 Score.
-
-
 
 import matplotlib.pyplot as plt
 
